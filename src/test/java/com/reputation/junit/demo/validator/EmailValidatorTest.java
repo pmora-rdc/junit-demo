@@ -133,4 +133,10 @@ public class EmailValidatorTest {
         boolean result = emailValidator.isValid("reputation.com");
         assertFalse("Invalid email passed", result);
     }
+
+    @Test
+    public void checkInvalidEmail_11() {
+        boolean result = emailValidator.isValid("_foo@reputation.com");
+        assertFalse("Invalid email passed", result);
+    }
 }
