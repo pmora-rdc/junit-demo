@@ -1,11 +1,9 @@
 package com.reputation.junit.demo.controller;
 
 import org.junit.ClassRule;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.images.builder.ImageFromDockerfile;
@@ -22,7 +20,7 @@ import static org.junit.Assert.*;
 public class ImportantControllerTest {
     @ClassRule
     public static GenericContainer genericContainer = new GenericContainer(new ImageFromDockerfile()
-            .withFileFromClasspath("Dockerfile", "Dockerfile")
+            .withFileFromClasspath("Dockerfile", "classpath:Dockerfile")
     ).withExposedPorts(8090);
 
     @Test
