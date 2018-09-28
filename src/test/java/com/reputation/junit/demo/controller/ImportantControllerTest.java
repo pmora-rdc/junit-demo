@@ -21,13 +21,13 @@ import static org.junit.Assert.*;
 public class ImportantControllerTest {
     public GenericContainer genericContainer = new GenericContainer(new ImageFromDockerfile()
             .withFileFromClasspath("Dockerfile", "Dockerfile")
-    ).withExposedPorts(8080);
+    );
 
     @Test
     public void getIndexTest()
             throws Exception {
         String address = "http://"
-                + genericContainer.getContainerIpAddress() + "/api/" + ":8080";
+                + genericContainer.getContainerIpAddress() + ":8080" + "/api/";
         String response = simpleGetRequest(address);
 
         assertEquals(response, "Hello World!");
