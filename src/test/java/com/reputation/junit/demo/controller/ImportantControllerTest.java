@@ -1,5 +1,6 @@
 package com.reputation.junit.demo.controller;
 
+import org.junit.ClassRule;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,6 +20,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ImportantControllerTest {
+    @ClassRule
     public GenericContainer genericContainer = new GenericContainer(new ImageFromDockerfile()
             .withFileFromClasspath("Dockerfile", "Dockerfile")
     ).withExposedPorts(8090);
