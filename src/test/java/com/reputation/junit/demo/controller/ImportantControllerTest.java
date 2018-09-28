@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 public class ImportantControllerTest {
     public GenericContainer genericContainer = new GenericContainer(new ImageFromDockerfile()
             .withFileFromClasspath("Dockerfile", "Dockerfile")
-    );
+    ).withExposedPorts(8090);
 
     @Test
     public void getIndexTest()
