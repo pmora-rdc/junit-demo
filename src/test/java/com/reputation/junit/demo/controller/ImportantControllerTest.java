@@ -27,7 +27,7 @@ public class ImportantControllerTest {
     public void getIndexTest()
             throws Exception {
         String address = "http://"
-                + genericContainer.getContainerIpAddress() + ":8080";
+                + genericContainer.getContainerIpAddress() + "/api/" + ":8080";
         String response = simpleGetRequest(address);
 
         assertEquals(response, "Hello World!");
