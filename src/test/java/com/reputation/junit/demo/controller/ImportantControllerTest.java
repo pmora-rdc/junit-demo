@@ -9,6 +9,7 @@ import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.images.builder.ImageFromDockerfile;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -20,7 +21,7 @@ import static org.junit.Assert.*;
 public class ImportantControllerTest {
     @ClassRule
     public static GenericContainer genericContainer = new GenericContainer(new ImageFromDockerfile()
-            .withFileFromClasspath("Dockerfile", "../../../../Dockerfile")
+            .withFileFromPath("./Dockerfile", new File("./DockerFile").toPath())
     ).withExposedPorts(8090);
 
     @Test
