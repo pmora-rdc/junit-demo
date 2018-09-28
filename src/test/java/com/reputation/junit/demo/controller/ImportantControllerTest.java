@@ -21,7 +21,7 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class ImportantControllerTest {
     @ClassRule
-    public GenericContainer genericContainer = new GenericContainer(new ImageFromDockerfile()
+    public static GenericContainer genericContainer = new GenericContainer(new ImageFromDockerfile()
             .withFileFromClasspath("Dockerfile", "Dockerfile")
     ).withExposedPorts(8090);
 
