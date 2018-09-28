@@ -75,6 +75,12 @@ public class EmailValidatorTest {
     }
 
     @Test
+    public void checkValidEmail_11() {
+        boolean result = emailValidator.isValid("_foo@reputation.com");
+        assertTrue("Valid email failed", result);
+    }
+
+    @Test
     public void checkInvalidEmail_1() {
         boolean result = emailValidator.isValid("pmora\\123@reputation.com");
         assertFalse("Invalid email passed", result);
@@ -131,12 +137,6 @@ public class EmailValidatorTest {
     @Test
     public void checkInvalidEmail_10() {
         boolean result = emailValidator.isValid("reputation.com");
-        assertFalse("Invalid email passed", result);
-    }
-
-    @Test
-    public void checkInvalidEmail_11() {
-        boolean result = emailValidator.isValid("_foo@reputation.com");
         assertFalse("Invalid email passed", result);
     }
 }
