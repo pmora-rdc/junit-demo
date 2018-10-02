@@ -28,12 +28,13 @@ public class ImportantControllerIT {
     public void getIndexTest1() {
         HttpEntity<String> entity = new HttpEntity<>(null, new HttpHeaders());
 
-        ResponseEntity<String> response = restTemplate
-                .exchange("http://localhost:8090/api/", HttpMethod.GET, entity, String.class);
+        System.out.println("Body1... ");
+        String response = restTemplate.getForObject("http://localhost:8090/api/", String.class);
 
-        System.out.println("Body: " + response.getBody());
+        System.out.println("Body2... ");
+        System.out.println("Body: " + response);
 
-        assertEquals("Hello World!", response.getBody());
+        assertEquals("Hello World!", response);
 
         //assertTrue("getIndexTest",2 == 2);
     }
