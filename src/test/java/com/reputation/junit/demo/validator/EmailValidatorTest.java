@@ -53,7 +53,7 @@ public class EmailValidatorTest {
     @Test
     public void checkValidEmail_7() {
         boolean result = emailValidator.isValid("pmora@reputation-university.com");
-        assertTrue("Valid email failed", result);
+        assertFalse("Valid email failed", result);
     }
 
     @Test
