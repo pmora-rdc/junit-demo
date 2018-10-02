@@ -24,6 +24,7 @@
         <java.version>1.8</java.version>
         <aws.repoName>r4e-repository</aws.repoName>
         <aws.repoUri>223739384113.dkr.ecr.us-east-1.amazonaws.com</aws.repoUri>
+        <container.imageName>${project.artifactId}</container.imageName>
         <container.hostPort>8090</container.hostPort>
         <container.port>8090</container.port>
         <container.serviceHost>http://localhost:${container.port}</container.serviceHost>
@@ -70,7 +71,7 @@
                     <images>
                         <image>
                             <alias>latest</alias>
-                            <name>${aws.repoUri}/${aws.repoName}:latest</name>
+                            <name>${aws.repoUri}/${aws.repoName}:${container.imageName}-latest</name>
                             <registry>${aws.repoUri}/${aws.repoName}</registry>
                             <build>
                                 <dockerFileDir>${project.basedir}</dockerFileDir>
