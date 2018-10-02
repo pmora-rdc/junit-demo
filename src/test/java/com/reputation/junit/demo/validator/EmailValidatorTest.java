@@ -35,7 +35,7 @@ public class EmailValidatorTest {
     @Test
     public void checkValidEmail_4() {
         boolean result = emailValidator.isValid("123pmora@reputation.com");
-        assertFalse("Valid email failed", result);
+        assertTrue("Valid email failed", result);
     }
 
     @Test
