@@ -20,7 +20,7 @@ public class ImportantControllerIT {
     @Before
     public void setUp() {
         restTemplate = new TestRestTemplate();
-        serviceUrl = "http://localhost:8090";
+        serviceUrl = "http://localhost:8090/api/";
     }
 
     @Test
