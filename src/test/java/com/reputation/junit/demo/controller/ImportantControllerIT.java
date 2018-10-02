@@ -12,13 +12,24 @@ import static org.junit.Assert.assertTrue;
 public class ImportantControllerIT {
 
     @Test
-    public void getIndexTest() {
+    public void getIndexTest1() {
         try {
-            Thread.sleep(100000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         assertTrue("getIndexTest",2 == 2);
+    }
+
+    @Test
+    public void getIndexTest2() {
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        assertTrue("getIndexTest",3 == 3);
     }
 }
