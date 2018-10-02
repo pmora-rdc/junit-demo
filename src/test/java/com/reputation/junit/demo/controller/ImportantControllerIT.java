@@ -8,7 +8,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.assertTrue;
 
-@Ignore
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ImportantControllerIT {
