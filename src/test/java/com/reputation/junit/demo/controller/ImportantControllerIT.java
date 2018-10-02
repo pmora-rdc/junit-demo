@@ -15,6 +15,12 @@ public class ImportantControllerIT {
 
     @Test
     public void getIndexTest() {
+        try {
+            Thread.sleep(100000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         assertTrue("getIndexTest",2 == 2);
     }
 }
