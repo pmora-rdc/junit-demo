@@ -80,6 +80,6 @@ public class ImportantControllerIT {
         ResponseEntity<String> response = restTemplate.exchange(this.serviceUrl, HttpMethod.GET, entity, String.class);
 
         System.out.println("Response Code: " + response.getStatusCode());
-        assertEquals(HttpStatus.ACCEPTED, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
     }
 }

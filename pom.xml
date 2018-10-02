@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>demo</name>
-    <description></description>
+    <description>junit demo pipeline</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -22,6 +22,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <aws.repoName>r4e-repository</aws.repoName>
+        <aws.repoUri>223739384113.dkr.ecr.us-east-1.amazonaws.com</aws.repoUri>
+        <container.hostPort>8090</container.hostPort>
+        <container.port>8090</container.port>
+        <container.serviceHost>http://localhost:${container.port}</container.serviceHost>
     </properties>
 
     <dependencies>
@@ -65,8 +70,8 @@
                     <images>
                         <image>
                             <alias>latest</alias>
-                            <name>demo-test-env/local-repo:latest</name>
-                            <registry>demo-test-env/local-repo</registry>
+                            <name>${aws.repoUri}/${aws.repoName}:latest</name>
+                            <registry>${aws.repoUri}/${aws.repoName}</registry>
                             <build>
                                 <dockerFileDir>${project.basedir}</dockerFileDir>
                                 <filter>false</filter>
@@ -76,11 +81,11 @@
                             </build>
                             <run>
                                 <ports>
-                                    <port>8090:8090</port>
+                                    <port>${container.hostPort}:${container.port}</port>
                                 </ports>
                                 <wait>
                                     <http>
-                                        <url>http://localhost:8090/actuator/health</url>
+                                        <url>${container.serviceHost}/actuator/health</url>
                                     </http>
                                     <time>100000</time>
                                 </wait>
