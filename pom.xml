@@ -80,9 +80,9 @@
                                 </ports>
                                 <wait>
                                     <http>
-                                        <url>http://localhost:8090/actuator/heath</url>
+                                        <url>http://localhost:8090/actuator/health</url>
                                     </http>
-                                    <time>10000</time>
+                                    <time>100000</time>
                                 </wait>
                             </run>
                         </image>
