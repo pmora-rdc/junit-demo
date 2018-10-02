@@ -1,35 +1,43 @@
 package com.reputation.junit.demo.controller;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ImportantControllerIT {
+    TestRestTemplate restTemplate;
+
+    @Before
+    public void setUp() {
+        restTemplate = new TestRestTemplate();
+    }
 
     @Test
     public void getIndexTest1() {
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        HttpEntity<String> entity = new HttpEntity<>(null, new HttpHeaders());
 
-        assertTrue("getIndexTest",2 == 2);
+        ResponseEntity<String> response = restTemplate
+                .exchange("http://localhost:8090/students/Student1/courses/Course1", HttpMethod.GET,
+                        entity, String.class);
+
+        assertEquals("Hello World!", response.getBody());
+        //assertTrue("getIndexTest",2 == 2);
     }
 
     @Test
     public void getIndexTest2() {
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
         assertTrue("getIndexTest",3 == 3);
     }
 }
