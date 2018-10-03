@@ -50,12 +50,11 @@ public class ImportantControllerIT {
         assertEquals("Hello World!", response);
     }
 
-
     @Test
     public void getIndexTest5() {
         String response = restTemplate.getForObject(this.serviceUrl, String.class);
 
-        assertEquals("Hello World!", response);
+        assertEquals("Hello World!!!!", response);
     }
 
     @Test

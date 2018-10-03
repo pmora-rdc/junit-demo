@@ -84,11 +84,11 @@
                                     <port>${container.hostPort}:${container.port}</port>
                                 </ports>
                                 <wait>
-                                    <http>
-                                        <url>${container.serviceHost}/actuator/health</url>
-                                    </http>
-                                    <time>100000</time>
-                                </wait>
+                                <http>
+                                    <url>${container.serviceHost}/actuator/health</url>
+                                </http>
+                                <time>100000</time>
+                            </wait>
                             </run>
                         </image>
                     </images>
