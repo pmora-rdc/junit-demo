@@ -34,7 +34,7 @@ pipeline {
         }
         stage ('Integration Test') {
             steps {
-                sh 'mvn verify -Dcontainer.imageName="${imageName}"'
+                sh 'mvn verify'
             }
         }
         stage ('Deploy') {
@@ -42,7 +42,7 @@ pipeline {
                 sh 'echo "Deploying solution to UAT...."'
                 sh 'mvn docker:push'
                 sh 'echo "Restarting the service..."'
-                sh 'mvn exec:exec@restart -Dawscli={awscli} -Dcontainer.imageName="${imageName}-latest -Daws.clusterNameUAT=${ecs_cluster_name_uat} -Daws.serviceNameUAT=${ecs_service_name_uat}'
+                sh 'mvn exec:exec@restart -Dawscli={awscli} -Daws.clusterNameUAT=${ecs_cluster_name_uat} -Daws.serviceNameUAT=${ecs_service_name_uat}'
             }
         }
     }
