@@ -40,6 +40,9 @@ pipeline {
         stage ('Deploy') {
             steps {
                 sh 'echo "Deploying solution to UAT...."'
+                sh 'mvn docker:push'
+                sh 'echo "Restarting the service..."
+                sh 'mvn exec:exec@restart -Dawscli={awscli} -Daws.clusterNameUAT=${ecs_cluster_name_uat} -Daws.serviceNameUAT=${ecs_service_name_uat}'
             }
         }
     }

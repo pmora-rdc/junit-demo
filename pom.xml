@@ -28,6 +28,9 @@
         <container.hostPort>8090</container.hostPort>
         <container.port>8090</container.port>
         <container.serviceHost>http://localhost:${container.port}</container.serviceHost>
+        <awscli>/var/lib/jenkins/.local/bin/aws</awscli>
+        <aws.clusterNameUAT>Reputation-UAT</aws.clusterNameUAT>
+        <aws.serviceNameUAT>${project.artifactId}</aws.serviceNameUAT>
     </properties>
 
     <dependencies>
@@ -115,6 +118,31 @@
                             <goal>integration-test</goal>
                             <goal>verify</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <id>restart</id>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <executable>${awscli}</executable>
+                            <arguments>
+                                <argument>ecs</argument>
+                                <argument>update-service</argument>
+                                <argument>--force-new-deployment</argument>
+                                <argument>--cluster</argument>
+                                <argument>${aws.clusterNameUAT}</argument>
+                                <argument>--service</argument>
+                                <argument>${aws.serviceNameUAT}</argument>
+                            </arguments>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
