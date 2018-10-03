@@ -24,13 +24,14 @@
         <java.version>1.8</java.version>
         <aws.repoName>r4e-repository</aws.repoName>
         <aws.repoUri>223739384113.dkr.ecr.us-east-1.amazonaws.com</aws.repoUri>
-        <container.imageName>${project.artifactId}</container.imageName>
+        <container.imageName>junit-demo-pipeline</container.imageName>
+        <container.imageTag>latest</container.imageTag>
         <container.hostPort>8090</container.hostPort>
         <container.port>8090</container.port>
         <container.serviceHost>http://localhost:${container.port}</container.serviceHost>
         <awscli>/var/lib/jenkins/.local/bin/aws</awscli>
         <aws.clusterNameUAT>Reputation-UAT</aws.clusterNameUAT>
-        <aws.serviceNameUAT>${project.artifactId}</aws.serviceNameUAT>
+        <aws.serviceNameUAT>${container.imageName}-service-uat</aws.serviceNameUAT>
     </properties>
 
     <dependencies>
@@ -68,7 +69,7 @@
                     <images>
                         <image>
                             <alias>latest</alias>
-                            <name>${aws.repoUri}/${aws.repoName}:${container.imageName}-latest</name>
+                            <name>${aws.repoUri}/${aws.repoName}:${container.imageName}-${container.imageTag}</name>
                             <registry>${aws.repoUri}/${aws.repoName}</registry>
                             <build>
                                 <dockerFileDir>${project.basedir}</dockerFileDir>
