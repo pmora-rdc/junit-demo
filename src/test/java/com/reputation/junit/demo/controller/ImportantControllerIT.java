@@ -60,20 +60,6 @@ public class ImportantControllerIT {
 
     @Test
     public void getIndexTest6() {
-        String response = restTemplate.getForObject(this.serviceUrl, String.class);
-
-        assertEquals("Hello World!", response);
-    }
-
-    @Test
-    public void getIndexTest7() {
-        String response = restTemplate.getForObject(this.serviceUrl, String.class);
-
-        assertEquals("Hello World!", response);
-    }
-
-    @Test
-    public void getIndexTest8() {
         HttpEntity<String> entity = new HttpEntity<>(null, new HttpHeaders());
 
         ResponseEntity<String> response = restTemplate.exchange(this.serviceUrl, HttpMethod.GET, entity, String.class);
