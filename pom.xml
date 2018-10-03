@@ -22,6 +22,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <!-- Custom properties -->
         <aws.repoName>r4e-repository</aws.repoName>
         <aws.repoUri>223739384113.dkr.ecr.us-east-1.amazonaws.com</aws.repoUri>
         <container.imageName>junit-demo-pipeline</container.imageName>
